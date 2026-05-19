@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    .script-font { font-family: 'Cormorant Garamond', serif; }
+    .heading-font { font-family: 'Playfair Display', serif; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .fade-up { animation: fadeUp 1.2s ease forwards; }
+    .fade-up-delay { animation: fadeUp 1.2s ease 0.3s forwards; opacity: 0; }
+    .fade-up-delay2 { animation: fadeUp 1.2s ease 0.6s forwards; opacity: 0; }
+    .float-anim { animation: float 4s ease-in-out infinite; }
+    .floral-bg { background-image: radial-gradient(ellipse at 20% 50%, rgba(197,143,124,0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(197,143,124,0.06) 0%, transparent 50%), radial-gradient(ellipse at 60% 80%, rgba(180,120,100,0.05) 0%, transparent 40%); }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full overflow-auto">
+  <audio id="bg-music" loop style="display:none;">
+   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+  <div id="music-control" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-white rounded-full shadow-lg p-2 md:p-3 border border-amber-100/50">
+   <button id="music-btn" class="p-2 hover:bg-amber-50 rounded-full transition-colors" title="Toggle Music" aria-label="Toggle Background Music"> <i data-lucide="music-2" class="w-5 h-5" style="color: #c58f7c;"></i> </button> <input type="range" id="volume-slider" min="0" max="100" value="30" class="w-20 cursor-pointer" style="accent-color: #c58f7c;" title="Volume Control">
+  </div>
+  <div id="app" class="w-full h-full"><!-- Hero -->
+   <section id="hero-section" class="relative w-full h-full flex items-center justify-center text-center overflow-hidden" style="background: linear-gradient(135deg, #2c1810 0%, #4a2c20 30%, #1a0f0a 100%);">
+    <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2220%22 cy=%2230%22 r=%221%22 fill=%22%23c58f7c%22/><circle cx=%2260%22 cy=%2270%22 r=%220.8%22 fill=%22%23c58f7c%22/><circle cx=%2280%22 cy=%2220%22 r=%221.2%22 fill=%22%23c58f7c%22/><circle cx=%2240%22 cy=%2280%22 r=%220.6%22 fill=%22%23c58f7c%22/></svg>'); background-size: 200px;"></div>
+    <div class="relative z-10 px-6">
+     <p class="text-sm tracking-[6px] uppercase text-amber-200/80 fade-up mb-4">The Wedding Of</p>
+     <h1 id="hero-names" class="script-font text-6xl md:text-8xl text-white fade-up-delay font-light italic">Rina &amp; Fajar</h1>
+     <div class="w-24 h-px bg-amber-200/50 mx-auto my-6 fade-up-delay2"></div>
+     <p id="hero-date" class="text-lg tracking-[3px] text-amber-100/70 fade-up-delay2">12 Desember 2026</p>
+     <div class="mt-12 fade-up-delay2">
+      <svg class="w-8 h-8 mx-auto text-amber-200/50 float-anim" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+     </div>
+    </div>
+   </section><!-- Greeting -->
+   <section class="w-full py-20 px-6 floral-bg" style="background-color: #fdf8f4;">
+    <div class="max-w-2xl mx-auto text-center">
+     <h2 id="greeting-heading" class="script-font text-5xl md:text-6xl font-light italic mb-8" style="color: #8b5e3c;">Assalamu'alaikum</h2>
+     <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl shadow-amber-900/5 border border-amber-100/50">
+      <p class="text-gray-600 leading-relaxed text-base mb-8">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.</p>
+      <div class="my-8">
+       <div class="w-16 h-px bg-amber-800/20 mx-auto mb-6"></div>
+       <p id="couple-full" class="heading-font text-2xl md:text-3xl font-bold" style="color: #4a2c20;">Rina Putri &amp; Fajar Ramadhan</p>
+       <div class="w-16 h-px bg-amber-800/20 mx-auto mt-6"></div>
+      </div>
+      <div class="my-8 space-y-1">
+       <p class="flex items-center justify-center gap-2 text-gray-500"><i data-lucide="calendar" class="w-4 h-4"></i> <span id="detail-date">Minggu, 12 Desember 2026</span></p>
+       <p class="text-gray-500">Pukul 10.00 WIB</p>
+      </div>
+      <div class="my-8 space-y-1">
+       <p class="flex items-center justify-center gap-2 font-medium text-gray-700"><i data-lucide="map-pin" class="w-4 h-4" style="color: #c58f7c;"></i> <span id="detail-venue">Gedung Serbaguna Bahagia</span></p>
+       <p id="detail-address" class="text-gray-500 text-sm">Jl. Mawar Indah No. 10, Jakarta Selatan</p>
+      </div>
+      <div class="my-6 rounded-2xl overflow-hidden shadow-lg" style="height: 300px;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322748!2d106.7922!3d-6.2088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e4e4e4e4e5%3A0x1234567890abcdef!2sGedung%20Serbaguna%20Bahagia!5e0!3m2!1sid!2sid!4v1234567890" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div><a href="https://maps.google.com/maps?q=Gedung+Serbaguna+Bahagia,+Jakarta+Selatan" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-4 px-8 py-3 rounded-full text-white text-sm font-medium transition-all hover:scale-105 hover:shadow-lg" style="background: #c58f7c;"> <i data-lucide="navigation" class="w-4 h-4"></i> Lihat Lokasi </a>
+     </div>
+    </div>
+   </section><!-- Gallery -->
+   <section class="w-full py-20 px-6" style="background-color: #f9f3ee;">
+    <h2 class="script-font text-5xl md:text-6xl font-light italic text-center mb-12" style="color: #8b5e3c;">Moments</h2>
+    <div id="gallery-container" class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4"><!-- Gallery images will be loaded here -->
+    </div>
+   </section><!-- Footer -->
+   <footer class="w-full py-10 text-center text-white" style="background: #4a2c20;">
+    <p class="script-font text-3xl italic mb-2">Terima Kasih</p>
+    <p class="text-amber-200/60 text-sm">Atas doa dan kehadiran Bapak/Ibu/Saudara/i</p>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      couple_names: "Rina & Fajar",
+      wedding_date: "12 Desember 2026",
+      venue_name: "Gedung Serbaguna Bahagia",
+      venue_address: "Jl. Mawar Indah No. 10, Jakarta Selatan",
+      greeting_text: "Assalamu'alaikum",
+      background_color: "#fdf8f4",
+      surface_color: "#ffffff",
+      text_color: "#4a2c20",
+      primary_action_color: "#c58f7c",
+      secondary_action_color: "#8b5e3c",
+      font_family: "Cormorant Garamond",
+      font_size: 16
+    };
+
+    function onConfigChange(config) {
+      const c = { ...defaultConfig, ...config };
+      document.getElementById('hero-names').textContent = c.couple_names;
+      document.getElementById('hero-date').textContent = c.wedding_date;
+      document.getElementById('greeting-heading').textContent = c.greeting_text;
+      document.getElementById('detail-date').textContent = "Minggu, " + c.wedding_date;
+      document.getElementById('detail-venue').textContent = c.venue_name;
+      document.getElementById('detail-address').textContent = c.venue_address;
+      document.getElementById('couple-full').textContent = c.couple_names.includes('&') ? c.couple_names.split('&').map(n => n.trim() + (n.trim().length < 10 ? ' Putri' : '')).join(' & ') : c.couple_names;
+      // Actually just show names as-is for couple-full
+      document.getElementById('couple-full').textContent = c.couple_names;
+
+      // Colors
+      const sections = document.querySelectorAll('.floral-bg');
+      sections.forEach(s => s.style.backgroundColor = c.background_color);
+      document.querySelectorAll('.bg-white').forEach(el => el.style.backgroundColor = c.surface_color);
+      document.getElementById('greeting-heading').style.color = c.secondary_action_color;
+      document.getElementById('couple-full').style.color = c.text_color;
+      document.querySelectorAll('a[style*="background: #c58f7c"], a[style*="background:#c58f7c"]').forEach(el => el.style.background = c.primary_action_color);
+      const btn = document.querySelector('a.inline-flex');
+      if (btn) btn.style.background = c.primary_action_color;
+
+      // Font
+      const fontStack = `${c.font_family}, serif`;
+      document.querySelectorAll('.script-font').forEach(el => el.style.fontFamily = `${c.font_family}, serif`);
+      const baseSize = c.font_size;
+      document.getElementById('hero-names').style.fontSize = `${baseSize * 4}px`;
+      document.getElementById('greeting-heading').style.fontSize = `${baseSize * 3.2}px`;
+      document.getElementById('couple-full').style.fontSize = `${baseSize * 1.8}px`;
+    }
+
+    window.elementSdk.init({
+      defaultConfig,
+      onConfigChange,
+      mapToCapabilities: (config) => ({
+        recolorables: [
+          { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+          { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+          { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+          { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+          { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
+        ],
+        borderables: [],
+        fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+        fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+      }),
+      mapToEditPanelValues: (config) => new Map([
+        ["couple_names", config.couple_names || defaultConfig.couple_names],
+        ["wedding_date", config.wedding_date || defaultConfig.wedding_date],
+        ["venue_name", config.venue_name || defaultConfig.venue_name],
+        ["venue_address", config.venue_address || defaultConfig.venue_address],
+        ["greeting_text", config.greeting_text || defaultConfig.greeting_text]
+      ])
+    });
+
+    lucide.createIcons();
+
+    // Music controls
+    const bgMusic = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-btn');
+    const volumeSlider = document.getElementById('volume-slider');
+    let isPlaying = false;
+
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.innerHTML = '<i data-lucide="music-2" class="w-5 h-5" style="color: #c58f7c;"></i>';
+        isPlaying = false;
+      } else {
+        bgMusic.play().catch(err => console.log('Audio play failed:', err));
+        musicBtn.innerHTML = '<i data-lucide="music" class="w-5 h-5" style="color: #c58f7c;"></i>';
+        isPlaying = true;
+      }
+      lucide.createIcons();
+    });
+
+    volumeSlider.addEventListener('input', (e) => {
+      bgMusic.volume = e.target.value / 100;
+    });
+
+    // Auto-play with user interaction
+    document.addEventListener('click', () => {
+      if (!isPlaying) {
+        bgMusic.play().catch(err => console.log('Audio play failed:', err));
+        musicBtn.innerHTML = '<i data-lucide="music" class="w-5 h-5" style="color: #c58f7c;"></i>';
+        isPlaying = true;
+        lucide.createIcons();
+      }
+    }, { once: true });
+
+    bgMusic.volume = 0.3;
+
+    // Load gallery with wedding venue images
+    function loadGallery() {
+      const galleryImages = [
+        'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1464207687429-7505649dae38?q=80&w=1200&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=1200&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1469927160602-89565f1e5fcf?q=80&w=1200&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1505631346881-b72b27e84530?q=80&w=1200&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1200&auto=format&fit=crop'
+      ];
+
+      const container = document.getElementById('gallery-container');
+      container.innerHTML = '';
+
+      // Create 6 gallery items with random wedding photos
+      galleryImages.forEach((imgUrl, index) => {
+        const div = document.createElement('div');
+        let classes = 'rounded-2xl h-64 md:h-72 overflow-hidden shadow-lg';
+        
+        if (index === 1) {
+          classes += ' md:row-span-2';
+        }
+        if (index === 4) {
+          classes += ' col-span-2 md:col-span-1';
+        }
+
+        div.className = classes;
+        div.innerHTML = `
+          <img 
+            src="${imgUrl}" 
+            alt="Wedding moment ${index + 1}"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+            onerror="this.style.background='linear-gradient(135deg, #e8d5c4 0%, #f2e6db 100%)'; this.style.display='none';"
+          >
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Load gallery on page load
+    window.addEventListener('load', loadGallery);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fe1fbbd221c4098',t:'MTc3OTE4MTk4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
